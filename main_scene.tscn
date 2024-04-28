@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://6w0cqvwssb10"]
+
+[ext_resource type="Texture2D" uid="uid://b6wkju4jtiq1f" path="res://1920x1080.png" id="1_hbo6s"]
+[ext_resource type="Shader" path="res://main_scene.gdshader" id="1_htyep"]
+[ext_resource type="Texture2D" uid="uid://b0n5jqichhfdq" path="res://gus.png" id="1_w1kav"]
+[ext_resource type="Script" path="res://BlackOverlay.gd" id="3_2v5h0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12e7u"]
+shader = ExtResource("1_htyep")
+shader_parameter/erase_center = null
+shader_parameter/erase_radius = 50.0
+shader_parameter/erase = false
+
+[node name="MainNode" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(5.76, 3.24)
+texture = ExtResource("1_w1kav")
+
+[node name="BlackOverlay" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_12e7u")
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_hbo6s")
+script = ExtResource("3_2v5h0")
