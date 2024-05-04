@@ -26,7 +26,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[node name="Ghost" type="AnimatedSprite2D"]
+z_index = -1
 position = Vector2(571, 278)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xe37j")

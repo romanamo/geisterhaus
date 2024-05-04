@@ -5,7 +5,7 @@ extends AnimatedSprite2D
 @onready var overlay_size : Vector2 = overlay.texture.get_size() * overlay.scale
 
 # Ghost moving speed
-@export var speed : Vector2 = Vector2(2.5, 2.5)
+@export var speed : Vector2 = Vector2(randi_range(0,1)*2 - 1, randi_range(0,1)*2 - 1)
 @export var SIGHT : float = 2.75
 
 # Called when the node enters the scene tree for the first time.
@@ -30,13 +30,11 @@ func _process(delta):
 	
 	# Update speed according to pos and overlay size
 	if (position.x + sprite_size.x >= overlay_size.x) or (position.x <= 0):
-		speed.x = -speed.x
+		speed.x *= -1
 		self.flip_h = !self.flip_h # change sprite direction
 	if (position.y + sprite_size.y >= overlay_size.y) or (position.y <= 0):
-		speed.y = -speed.y
+		speed.y *= -1
 	
-	
-		
 	# Stop if player uncovers sprite
 	if is_uncovered(position):
 		speed = Vector2.ZERO
