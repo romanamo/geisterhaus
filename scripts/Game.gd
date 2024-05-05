@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var ghosts : Node = %Enemies
 @onready var overlay : Sprite2D = $BlackOverlay
+@onready var timer : Timer = $Timer
+@onready var level_label = $LevelLabel
 
 @export var level: int = 1
 @export var spawn_inlay : float = 0.5 # in Interval [0;1]
@@ -12,17 +14,25 @@ var Ghost = preload("res://ghost.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_level(level)
-
+	timer.start(5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if found_all_ghosts():
 		level += 1
-		overlay.reset()
 		start_level(level)
-
+		timer.start(5 + timer.time_left)
+		
+func _on_timer_timeout():
+	level = 1
+	start_level(level)
+	timer.start(5)
+	
 func start_level(progress: int):
+	overlay.reset()
 	self.clear_ghosts()
+	level_label.set_text("Level: " + str(progress))
 	self.initialize_ghosts(progress)
 	
 func clear_ghosts():

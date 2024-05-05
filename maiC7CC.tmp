@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6w0cqvwssb10"]
+[gd_scene load_steps=10 format=3 uid="uid://6w0cqvwssb10"]
 
 [ext_resource type="Texture2D" uid="uid://b1qxivq5p1tfq" path="res://assets/tileset.png" id="1_5x1jr"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_exdjt"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://main_scene.gdshader" id="1_htyep"]
 [ext_resource type="Script" path="res://scripts/BlackOverlay.gd" id="3_2v5h0"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="6_1ovfo"]
-[ext_resource type="FontFile" uid="uid://dxq18jott88gb" path="res://assets/Daydream.ttf" id="7_il0q1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdoki"]
 texture = ExtResource("1_5x1jr")
@@ -21,8 +20,6 @@ sources/5 = SubResource("TileSetAtlasSource_fdoki")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_12e7u"]
 shader = ExtResource("1_htyep")
-
-[sub_resource type="Theme" id="Theme_eq3w2"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_exdjt")
@@ -48,19 +45,7 @@ script = ExtResource("6_1ovfo")
 unique_name_in_owner = true
 
 [node name="TimeLabel" type="Label" parent="."]
-offset_right = 167.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("7_il0q1")
-theme_override_font_sizes/font_size = 32
-
-[node name="LevelLabel" type="Label" parent="."]
-offset_left = 746.0
-offset_top = 1.0
-offset_right = 1150.0
-offset_bottom = 116.0
-theme = SubResource("Theme_eq3w2")
-theme_override_fonts/font = ExtResource("7_il0q1")
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 2
+offset_right = 85.0
+offset_bottom = 57.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
