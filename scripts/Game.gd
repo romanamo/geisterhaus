@@ -22,7 +22,7 @@ func _process(delta):
 	if found_all_ghosts():
 		level += 1
 		start_level(level)
-		timer.start(5 + timer.time_left)
+		timer.start(min(12, 5 + timer.time_left))
 		
 func _on_timer_timeout():
 	level = 1
@@ -31,6 +31,7 @@ func _on_timer_timeout():
 	
 func start_level(progress: int):
 	overlay.reset()
+	overlay.animate_fade()
 	self.clear_ghosts()
 	level_label.set_text("Level: " + str(progress))
 	self.initialize_ghosts(progress)
