@@ -33,5 +33,4 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xe37j")
 animation = &"idle"
 frame_progress = 0.248423
-flip_h = true
 script = ExtResource("5_an784")
