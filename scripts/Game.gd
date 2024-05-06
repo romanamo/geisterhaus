@@ -50,7 +50,7 @@ func clear_ghosts():
 
 func found_all_ghosts() -> bool:
 	for ghost in ghosts.get_children():
-		if not overlay.uncovered(ghost.get_center()):
+		if not ghost.caught:
 			return false 
 	return true
 	
