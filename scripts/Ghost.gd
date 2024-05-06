@@ -13,6 +13,7 @@ extends AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.play()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -20,8 +21,10 @@ func _process(delta):
 	var sprite_size = get_size()
 	var sprite_center : Vector2 = get_center()
 		
-	if not overlay.uncovered(sprite_center):
-		
+	if not caught:
+		if overlay.uncovered(sprite_center):
+			caught = true
+			poof_pfad.play()
 		# Turn if not on black spots using calculated lookahead vector
 		var lookahead = (sprite_center + speed.normalized() * sprite_size * SIGHT).clamp(Vector2.ZERO, overlay_size-Vector2(1,1))
 		
@@ -34,9 +37,11 @@ func _process(delta):
 			
 		# Update position
 		position += Vector2(speed.x, speed.y) * delta * 60
-
-	if overlay.uncovered(sprite_center):
-		poof_pfad.play()
+	
+	
+	
+	
+		
 		
 func get_center(sprite_size: Vector2=get_size()):
 	return self.position + sprite_size/2
