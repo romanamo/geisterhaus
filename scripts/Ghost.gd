@@ -12,7 +12,7 @@ extends AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.play()
+	self.play("idle")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +25,7 @@ func _process(delta):
 		if overlay.uncovered(sprite_center):
 			caught = true
 			poof_pfad.play()
+			self.play("scare")
 		# Turn if not on black spots using calculated lookahead vector
 		var lookahead = (sprite_center + speed.normalized() * sprite_size * SIGHT).clamp(Vector2.ZERO, overlay_size-Vector2(1,1))
 		
