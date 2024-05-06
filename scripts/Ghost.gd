@@ -3,7 +3,8 @@ extends AnimatedSprite2D
 
 @onready var overlay : Sprite2D =  $"../../BlackOverlay"
 @onready var overlay_size : Vector2 = overlay.texture.get_size() * overlay.scale
-
+@onready var poof_player = get_node("PoofSound")
+@onready var poof_pfad = $PoofSound
 # Ghost moving speed
 @export var speed : Vector2 = Vector2(0,0)
 @export var SIGHT : float = 2.75
@@ -33,7 +34,10 @@ func _process(delta):
 			
 		# Update position
 		position += Vector2(speed.x, speed.y) * delta * 60
-	
+
+	if overlay.uncovered(sprite_center):
+		poof_pfad.play()
+		
 func get_center(sprite_size: Vector2=get_size()):
 	return self.position + sprite_size/2
 	

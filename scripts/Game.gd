@@ -4,7 +4,9 @@ extends Node2D
 @onready var overlay : Sprite2D = $BlackOverlay
 @onready var timer : Timer = $Timer
 @onready var level_label = $LevelLabel
-
+#Test zum erstellen einer Playlist die den ersten Song abspielt
+@onready var audio_player = AudioStreamPlayer.new()
+@onready var poof_player = get_node("Audio/Poof")
 @export var level: int = 1
 @export var spawn_inlay : float = 0.5 # in Interval [0;1]
 
@@ -16,8 +18,13 @@ func _ready():
 	start_level(level)
 	timer.start(5)
 
+
+	
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	
 	if found_all_ghosts():
 		level += 1
@@ -63,3 +70,17 @@ func initialize_ghosts(progress: int):
 
 func amount_ghosts(progress: int):
 	return floor(1.3 * sqrt(progress) + cos(progress)**2)
+	
+#Funktion damit eine Playlist abgespielt wird	
+#func play_next_song():
+	#var song_path = "res://sfx/geisterhaus_theme_mit_Anfang.ogg"
+	#var song = load(song_path)
+	#var next_song_path = "res://sfx/geisterhaus_theme_mitte.ogg"
+	#var next_song = load(next_song_path)
+	#if(!audio_player.stream != null):
+		#audio_player.stream = next_song
+		#
+		#audio_player.play
+	#else:
+		#audio_player.stream = song
+		#audio_player.play

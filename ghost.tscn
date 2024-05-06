@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dggp57swewfn0"]
+[gd_scene load_steps=8 format=3 uid="uid://dggp57swewfn0"]
 
 [ext_resource type="Texture2D" uid="uid://bq0pow63j1myr" path="res://assets/ghost_loop0000.png" id="1_yogsr"]
 [ext_resource type="Texture2D" uid="uid://cqpyisyrknf0x" path="res://assets/ghost_loop0001.png" id="2_yd4ax"]
 [ext_resource type="Texture2D" uid="uid://64ij3n6aawdy" path="res://assets/ghost_loop0002.png" id="3_ajind"]
 [ext_resource type="Texture2D" uid="uid://l4jx7j7pbyfe" path="res://assets/ghost_loop0003.png" id="4_sck25"]
 [ext_resource type="Script" path="res://scripts/Ghost.gd" id="5_an784"]
+[ext_resource type="AudioStream" uid="uid://ptum6q2c2r52" path="res://sfx/poof-80161.mp3" id="6_dvwbh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xe37j"]
 animations = [{
@@ -34,3 +35,7 @@ sprite_frames = SubResource("SpriteFrames_xe37j")
 animation = &"idle"
 frame_progress = 0.248423
 script = ExtResource("5_an784")
+
+[node name="PoofSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_dvwbh")
+volume_db = 24.0
